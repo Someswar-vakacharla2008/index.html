@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Birthday Surprise 🎂</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+}
+
+/* Main button */
+button {
+  padding: 15px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: white;
+  color: #ff4081;
+}
+
+/* Modal background */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+}
+
+/* Modal box */
+.modal-content {
+  background: white;
+  color: #ff4081;
+  width: 80%;
+  max-width: 400px;
+  margin: 20% auto;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+/* Swipe screen */
+#swipeScreen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #ff4081;
+  color: white;
+  font-size: 28px;
+  padding-top: 200px;
+}
+
+/* Final message */
+#finalMsg {
+  display: none;
+  font-size: 30px;
+  padding: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎂 Happy Birthday TEJAAAA 🎉</h1>
+<button onclick="openGift()">Click Me 🎁</button>
+
+<!-- First Popup -->
+<div class="modal" id="giftModal">
+  <div class="modal-content">
+    <h2>🎁 A small gift for u vadina from your's Somu 💝</h2>
+    <button onclick="openSwipe()">Next ➡️</button>
+  </div>
+</div>
+
+<!-- Swipe Screen -->
+<div id="swipeScreen">
+  👉 Swipe Right
+  <div id="finalMsg">
+    💖 nenu niku dhorakadamey oka gift 😅 enjoy the day!! 🎁
+  </div>
+</div>
+
+<script>
+function openGift() {
+  document.getElementById("giftModal").style.display = "block";
+}
+
+function openSwipe() {
+  document.getElementById("giftModal").style.display = "none";
+  document.getElementById("swipeScreen").style.display = "block";
+}
+
+// Swipe detection
+let startX = 0;
+document.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  if (endX - startX > 80) {
+    document.getElementById("finalMsg").style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>
